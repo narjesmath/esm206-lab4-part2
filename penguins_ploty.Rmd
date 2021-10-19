@@ -1,0 +1,31 @@
+---
+title: "Interactive penguin file"
+author: "Narjes Mathlouthi"
+date: "10/19/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#Packages
+library(tidyverse)
+library(palmerpenguins)
+library(plotly)
+library(DT)
+```
+
+
+Scatterplot of penguin flipper_length_mm(x-axis) versus body_mass_g(y-axis), with the points having different colors based on species
+```{r}
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+
+ggplotly(penguins_graph) #makes the graph interactive)
+```
+```{r}
+datatable(penguins)
+```
+
